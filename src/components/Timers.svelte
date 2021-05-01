@@ -1,6 +1,7 @@
 <script>
   import {operationStore, query} from '@urql/svelte';
   import Timer from './Timer.svelte';
+  import NewTimer from './NewTimer.svelte';
 
   export let timers = [];
 
@@ -30,10 +31,17 @@
       }
     }
   }
+
+  function addTimer(newTimer) {
+    timers = [...timers, {id: newTimer.id, title: newTimer.title, timeElapsed: newTimer.timeElapsed, createdAt: newTimer.createdAt}];
+  }
   
 </script>
 
 <div class="timerapp stack-large">
+  <!-- NewTimer-->
+  <NewTimer on:addTimer={e => addTimer(e.detail)} />
+
   <!-- Timers -->
   <ul role="list" class="timer-list stack-large" aria-labelledby="list-heading">
     {#each timers as timer (timer.id)}
