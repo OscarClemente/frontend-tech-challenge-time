@@ -56,8 +56,8 @@
 
   // Timing variables and functions
 
-  $: started = false;
-  $: running = false;
+  let started = false;
+  let running = false;
   let previous = timer.timeElapsed;
   let unsubscribe;
 
