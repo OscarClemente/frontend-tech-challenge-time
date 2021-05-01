@@ -35,7 +35,10 @@
   function addTimer(newTimer) {
     timers = [...timers, {id: newTimer.id, title: newTimer.title, timeElapsed: newTimer.timeElapsed, createdAt: newTimer.createdAt}];
   }
-  
+
+  function deleteTimer(timer) {
+    timers = timers.filter(t => t.id !== timer.id);
+  }  
 </script>
 
 <div class="timerapp stack-large">
@@ -46,7 +49,9 @@
   <ul role="list" class="timer-list stack-large" aria-labelledby="list-heading">
     {#each timers as timer (timer.id)}
       <li class="timer">
-        <Timer {timer}/>
+        <Timer {timer}
+          on:delete={e => deleteTimer(e.detail)}
+        />
       </li>
     {:else}
       <li>
