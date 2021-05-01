@@ -19,3 +19,22 @@ export function formatTime(milliseconds) {
   const t = lastDigit(Math.floor(milliseconds / 100));
   return `${hh}:${mm}:${ss}.${t}`;
 }
+
+const today = new Date()
+const thisWeekTmp = new Date().setDate(today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1))
+const thisWeek = new Date(thisWeekTmp)
+
+export function isToday(someDate) {
+  return someDate.getDate() == today.getDate() &&
+    someDate.getMonth() == today.getMonth() &&
+    someDate.getFullYear() == today.getFullYear()
+}
+
+export function isThisWeek(someDate) {
+  return someDate >= thisWeek
+}
+
+export function isThisMonth(someDate) {
+  return someDate.getMonth() == today.getMonth() &&
+    someDate.getFullYear() == today.getFullYear()
+}

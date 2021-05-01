@@ -29,7 +29,7 @@
 
 <div class="controls">
   {#if started && running}
-    <button class="btn" on:click="{pause}">Pause</button>
+    <button class="btn btn__relevant" on:click="{pause}">Pause</button>
   {:else if started && !running}
     <button class="btn" on:click="{start}">Continue</button>
   {:else}

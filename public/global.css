@@ -80,6 +80,11 @@ body {
   cursor: pointer;
   text-transform: capitalize;
 }
+
+.btn__relevant {
+  background-color: #ffefc3;
+}
+
 .btn.toggle-btn {
   border-width: 1px;
   border-color: #d3d3d3;
@@ -88,6 +93,24 @@ body {
   text-decoration: underline;
   border-color: #4d4d4d;
 }
+
+.btn-small {
+  padding: 0.2rem 0.4rem 0.1rem;
+  border: 0.2rem solid #4d4d4d;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.btn-small.toggle-btn {
+  border-width: 1px;
+  border-color: #d3d3d3;
+}
+
+.btn-small.toggle-btn[aria-pressed="true"] {
+  text-decoration: underline;
+  border-color: #4d4d4d;
+}
+
 .btn__danger {
   color: #fff;
   background-color: #ca3c3c;
@@ -114,6 +137,20 @@ body {
 .btn-group > * + * {
   margin-left: 0.8rem;
 }
+
+.btn-edit-group {
+  text-align: right;
+}
+
+.timer-head-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.timer-head-group {
+  flex: 70% 30%;
+}
+
 .label-wrapper {
   margin: 0;
   flex: 0 0 100%;
@@ -210,7 +247,7 @@ body {
   width: 100%;
   margin: unset auto;
 }
-/* Todo item styles */
+/* Timer item styles */
 .timer {
   display: flex;
   flex-direction: row;
@@ -228,71 +265,9 @@ body {
 .timer-text:focus {
   box-shadow: inset 0 0 0 2px;
 }
-/* CHECKBOX STYLES */
-.c-cb {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.25;
-  display: block;
-  position: relative;
-  min-height: 44px;
-  padding-left: 40px;
-  clear: left;
-}
-.c-cb > label::before,
-.c-cb > input[type="checkbox"] {
-  box-sizing: border-box;
-  top: -2px;
-  left: -2px;
-  width: 44px;
-  height: 44px;
-}
-.c-cb > input[type="checkbox"] {
-  -webkit-font-smoothing: antialiased;
-  cursor: pointer;
-  position: absolute;
-  z-index: 1;
-  margin: 0;
-  opacity: 0;
-}
-.c-cb > label {
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  display: inline-block;
-  margin-bottom: 0;
-  padding: 8px 15px 5px;
-  cursor: pointer;
-  touch-action: manipulation;
-}
-.c-cb > label::before {
-  content: "";
-  position: absolute;
-  border: 2px solid currentColor;
-  background: transparent;
-}
-.c-cb > input[type="checkbox"]:focus + label::before {
-  border-width: 4px;
-  outline: 3px dashed #228bec;
-}
-.c-cb > label::after {
-  box-sizing: content-box;
-  content: "";
-  position: absolute;
-  top: 11px;
-  left: 9px;
-  width: 18px;
-  height: 7px;
-  transform: rotate(-45deg);
-  border: solid;
-  border-width: 0 0 5px 5px;
-  border-top-color: transparent;
-  opacity: 0;
-  background: transparent;
-}
-.c-cb > input[type="checkbox"]:checked + label::after {
-  opacity: 1;
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

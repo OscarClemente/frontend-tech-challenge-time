@@ -83,6 +83,7 @@
 </script>
 
 <div class="stack-small">
+  <hr />
   {#if editing}
     <form on:submit|preventDefault={onSave} class="stack-small" on:keydown={e => e.key === 'Escape' && onCancelEdit()}>
       <div class="form-group">
@@ -99,20 +100,22 @@
       </div>
     </form>
   {:else}
-    <label for="timer-{timer.id}" class="timer-label">{timer.title}</label>
-    <div class="form-group">
-      <p>
+    <div class="timer-head-group">
+      <label for="timer-{timer.id}" class="timer-label">{timer.title}</label>
+      <div class="btn-edit-group">
+        <button type="button" class="btn-small" on:click={onEdit}>
+          ✏️
+        </button>
+        <button type="button" class="btn-small btn__danger" on:click={onDelete}>
+          🗙
+        </button>
+      </div>
+    </div>
+    <div style="text-align: center" class="form-group">
+      <p style="text-align: center">
         {formatTime(timer.timeElapsed)}
       </p>
       <TimerControls on:startTiming={startTiming} on:pauseTiming={pauseTiming} {started} {running} />
-    </div>
-    <div class="btn-group">
-      <button type="button" class="btn" on:click={onEdit}>
-        Edit
-      </button>
-      <button type="button" class="btn btn__danger" on:click={onDelete}>
-        Delete
-      </button>
     </div>
   {/if}
 </div>
