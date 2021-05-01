@@ -1,6 +1,9 @@
 <script>
   import {createEventDispatcher} from 'svelte';
   import {mutation} from '@urql/svelte';
+  import {time} from '../stores.js';
+  import {formatTime} from '../utils.js';
+  import TimerControls from './TimerControls.svelte';
 
   export let timer;
   const dispatch = createEventDispatcher();
@@ -22,6 +25,8 @@
       }
     `
   });
+
+  // Editing title and saving variables and functions
 
   let editing = false;
   let title = timer.title;
@@ -49,6 +54,32 @@
     editing = false;
   }
 
+  // Timing variables and functions
+
+  $: started = false;
+  $: running = false;
+  let previous = timer.timeElapsed;
+  let unsubscribe;
+
+  function startTiming() {
+    unsubscribe = time.subscribe(value => {
+      timer.timeElapsed = value + previous;
+    });
+    started = true;
+    running = true;
+  }
+
+  function pauseTiming() {
+    if (unsubscribe) {
+      unsubscribe();
+      unsubscribe = null;
+    }
+    previous = timer.timeElapsed;
+    started = true;
+    running = false;
+    updateTimerMutation({id: timer.id, title: title, timeElapsed: timer.timeElapsed});
+  }
+
 </script>
 
 <div class="stack-small">
@@ -70,7 +101,10 @@
   {:else}
     <label for="timer-{timer.id}" class="timer-label">{timer.title}</label>
     <div class="form-group">
-      {timer.timeElapsed}
+      <p>
+        {formatTime(timer.timeElapsed)}
+      </p>
+      <TimerControls on:startTiming={startTiming} on:pauseTiming={pauseTiming} {started} {running} />
     </div>
     <div class="btn-group">
       <button type="button" class="btn" on:click={onEdit}>
