@@ -1,9 +1,12 @@
 <script>
-	import Timers from './components/Timers.svelte'
-	import {initClient} from "@urql/svelte"
+	import Timers from './components/Timers.svelte';
+	import {initClient} from '@urql/svelte';
 
-	let timers = [{id: 1, title: "Example timer 1"},
-								{id: 2, title: "Example timer 2"},]
+	let timers = [];
+	
+	initClient({
+		url: "http://localhost:8080/query"
+	});
 </script>
 
 <Timers {timers}/>
