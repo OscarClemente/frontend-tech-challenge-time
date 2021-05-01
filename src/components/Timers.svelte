@@ -1,5 +1,6 @@
 <script>
-  import {operationStore, query} from '@urql/svelte'
+  import {operationStore, query} from '@urql/svelte';
+  import Timer from './Timer.svelte';
 
   export let timers = [];
 
@@ -37,7 +38,7 @@
   <ul role="list" class="timer-list stack-large" aria-labelledby="list-heading">
     {#each timers as timer (timer.id)}
       <li class="timer">
-        {timer.id} - {timer.title}
+        <Timer {timer}/>
       </li>
     {:else}
       <li>
