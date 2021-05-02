@@ -1,12 +1,16 @@
 
 # frontend-tech-challenge-time
 
+## Description
+This repository contains the frontend of a web app for creating, querying, updating and deleting timing sessions.
+It has been built using svelte and urql for connecting to a GraphQL backend.
+
+## Notes
+ * As the frontend was not the focus of this challenge. The code is implemented and work but I have not been rigorous or specifically clean on its implementation, things could be cleaner.
+ * No tests have beeen developed for the frontend as, again, the frontend is not the focus of this challenge.
+
 ## Execute
 Refer to [tech-challenge-time](https://github.com/OscarClemente/tech-challenge-time/tree/main) to execute the full app.
-
-## Description
-This repository contains a web app for creating, querying, updating and deleting timing sessions.
-It has been built using svelte and urql/svelte for connecting to a GraphQL backend.
 
 ## Execute only the frontend
 
